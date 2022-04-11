@@ -11,4 +11,12 @@ public class Coordinates {
         this.x = x;
         this.y = y;
     }
+
+    public double getX() {
+        return this.x;
+    }
+
+    public Integer getY() {
+        return this.y;
+    }
 }
