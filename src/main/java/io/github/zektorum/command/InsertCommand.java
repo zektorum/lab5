@@ -1,5 +1,6 @@
 package io.github.zektorum.command;
 
+import io.github.zektorum.data.Coordinates;
 import io.github.zektorum.data.PeopleCollection;
 import io.github.zektorum.data.Person;
 
@@ -15,7 +16,11 @@ public class InsertCommand implements CommandWithTwoArgs {
             System.out.print("Введите рост: ");
             height = userInput.nextDouble();
         }
+        System.out.print("Введите координаты\nx: ");
+        double x = userInput.nextDouble();
+        System.out.print("y: ");
+        int y = userInput.nextInt();
         System.out.println();
-        peopleCollection.insertElement(new Person(name, height));
+        peopleCollection.insertElement(new Person(name, height, new Coordinates(x, y)));
     }
 }
