@@ -7,13 +7,13 @@ public class Person {
     private double height; //Значение поля должно быть больше 0
     private Location location; //Поле может быть null
 
-    public Person(String name, double height) {
+    public Person(String name, double height, Coordinates coordinates) {
         this.name = name;
         this.height = height;
     }
 
-    public Person(String name, double height, Location location) {
-        this(name, height);
+    public Person(String name, double height, Coordinates coordinates, Location location) {
+        this(name, height, coordinates);
         this.location = location;
     }
 
