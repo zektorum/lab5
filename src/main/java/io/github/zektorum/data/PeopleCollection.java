@@ -69,7 +69,7 @@ public class PeopleCollection {
 
     public void print(Integer id, Person person) {
         System.out.printf(
-                "Имя: %s\nId:  %s\nРост: %s\nЛокация: (%d, %f, %f)\n\n",
+                "Имя: %s\nId:  %s\nРост: %s\nЛокация: (%.1f, %.1f, %.1f)\n\n",
                 person.getName(),
                 id,
                 person.getHeight(),
