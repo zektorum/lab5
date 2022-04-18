@@ -22,6 +22,10 @@ public class Person {
         return this.location;
     }
 
+    public Coordinates getCoordinates() {
+        return this.coordinates;
+    }
+
     public String getName() {
         return this.name;
     }
