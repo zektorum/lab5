@@ -5,13 +5,20 @@ public class Person {
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
     private double height; //Значение поля должно быть больше 0
+    private Color.EyeColor eyeColor; //Поле не может быть null
+    private Color.HairColor hairColor; //Поле может быть null
     private Location location; //Поле может быть null
 
-    public Person(String name, double height, Location location, Coordinates coordinates) {
+    public Person(
+            String name, double height, Location location, Coordinates coordinates,
+            Color.EyeColor eyeColor, Color.HairColor hairColor
+    ) {
         this.name = name;
         this.height = height;
         this.location = location;
         this.coordinates = coordinates;
+        this.eyeColor = eyeColor;
+        this.hairColor = hairColor;
     }
 
     public double getHeight() {
@@ -24,6 +31,14 @@ public class Person {
 
     public Coordinates getCoordinates() {
         return this.coordinates;
+    }
+
+    public Color.EyeColor getEyeColor() {
+        return this.eyeColor;
+    }
+
+    public Color.HairColor getHairColor() {
+        return this.hairColor;
     }
 
     public String getName() {
