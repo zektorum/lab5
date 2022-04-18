@@ -20,6 +20,10 @@ public class Person {
         return this.height;
     }
 
+    public Location getLocation() {
+        return this.location;
+    }
+
     public String getName() {
         return this.name;
     }
