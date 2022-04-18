@@ -33,12 +33,12 @@ public class InsertCommand implements CommandWithTwoArgs {
         double x2 = userInput.nextDouble();
         System.out.print("y: ");
         Integer y2 = userInput.nextInt();
-        System.out.println();
 
-        System.out.print("Введите цвет глаз: ");
-        String eyeColor = userInput.nextLine();
-        System.out.print("Введите цвет волос: ");
-        String hairColor = userInput.nextLine();
+        System.out.println("Введите цвет глаз: ");
+        String eyeColor = userInput.next();
+        System.out.println("Введите цвет волос: ");
+        String hairColor = userInput.next();
+        System.out.println();
 
         peopleCollection.insertElement(
                 new Person(
