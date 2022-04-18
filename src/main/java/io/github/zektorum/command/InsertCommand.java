@@ -1,5 +1,6 @@
 package io.github.zektorum.command;
 
+import io.github.zektorum.data.Color;
 import io.github.zektorum.data.Coordinates;
 import io.github.zektorum.data.Location;
 import io.github.zektorum.data.PeopleCollection;
@@ -34,6 +35,16 @@ public class InsertCommand implements CommandWithTwoArgs {
         Integer y2 = userInput.nextInt();
         System.out.println();
 
-        peopleCollection.insertElement(new Person(name, height, new Location(x, y, z), new Coordinates(x2, y2)));
+        System.out.print("Введите цвет глаз: ");
+        String eyeColor = userInput.nextLine();
+        System.out.print("Введите цвет волос: ");
+        String hairColor = userInput.nextLine();
+
+        peopleCollection.insertElement(
+                new Person(
+                        name, height, new Location(x, y, z), new Coordinates(x2, y2),
+                        Color.EyeColor.valueOf(eyeColor), Color.HairColor.valueOf(hairColor)
+                )
+        );
     }
 }
