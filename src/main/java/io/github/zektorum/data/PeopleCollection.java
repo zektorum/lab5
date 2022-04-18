@@ -68,7 +68,15 @@ public class PeopleCollection {
     }
 
     public void print(Integer id, Person person) {
-        System.out.printf("Имя: %s\nId:  %s\nРост: %s\n\n", person.getName(), id, person.getHeight());
+        System.out.printf(
+                "Имя: %s\nId:  %s\nРост: %s\nЛокация: (%d, %f, %f)\n\n",
+                person.getName(),
+                id,
+                person.getHeight(),
+                person.getLocation().getX(),
+                person.getLocation().getY(),
+                person.getLocation().getZ()
+        );
     }
 
     public void showAll() {
