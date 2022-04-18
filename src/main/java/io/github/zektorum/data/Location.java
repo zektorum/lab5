@@ -10,4 +10,16 @@ public class Location {
         this.y = y;
         this.z = z;
     }
+
+    public double getX() {
+        return this.x;
+    }
+
+    public Float getY() {
+        return this.y;
+    }
+
+    public Double getZ() {
+        return this.z;
+    }
 }
