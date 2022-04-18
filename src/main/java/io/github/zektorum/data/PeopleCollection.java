@@ -69,7 +69,8 @@ public class PeopleCollection {
 
     public void print(Integer id, Person person) {
         System.out.printf(
-                "Имя: %s\nId:  %s\nРост: %s\nЛокация: (%.1f, %.1f, %.1f)\nКоординаты: (%.1f, %d)\nЦвет глаз: %s\nЦвет волос: %s\n\n",
+                "Имя: %s\nId:  %s\nРост: %s\nЛокация: (%.1f, %.1f, %.1f)\nКоординаты: (%.1f, %d)\n" +
+                "Цвет глаз: %s\nЦвет волос: %s\nНациональность: %s\n\n",
                 person.getName(),
                 id,
                 person.getHeight(),
@@ -79,7 +80,8 @@ public class PeopleCollection {
                 person.getCoordinates().getX(),
                 person.getCoordinates().getY(),
                 person.getEyeColor(),
-                person.getHairColor()
+                person.getHairColor(),
+                person.getNationality()
         );
     }
 
