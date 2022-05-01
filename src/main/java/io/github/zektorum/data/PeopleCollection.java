@@ -53,6 +53,7 @@ public class PeopleCollection {
     }
 
     public void clearCollection() {
+        this.usedIds.clear();
         this.people.clear();
     }
 
@@ -83,6 +84,10 @@ public class PeopleCollection {
                 person.getHairColor(),
                 person.getNationality()
         );
+    }
+
+    public void printLocation() {
+        this.people.forEach((id, person) -> System.out.println(person.getLocation()));
     }
 
     public void showAll() {
