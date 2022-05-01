@@ -11,11 +11,13 @@ import java.util.Scanner;
 import java.util.TreeMap;
 
 public class Interpreter {
+    private final String PS1;
     private final String[] commandNames;
     private final Command[] commands;
     private final Map<String, Command> commandMap;
 
     {
+        this.PS1 = "$";
         this.commandMap = new TreeMap<>();
         this.commandNames = new String[] {
                 "info", "show", "insert", "clear", "save",
@@ -33,18 +35,27 @@ public class Interpreter {
 
     public void run(PeopleCollection peopleCollection) {
         Scanner userInput = new Scanner(System.in);
-        String line = userInput.nextLine().toLowerCase();
         List<String> tokens = new ArrayList<>();
+        String line;
+        String arg = "";
 
         while (true) {
+            System.out.printf("%s ", PS1);
+
+            line = userInput.nextLine().toLowerCase();
             tokens.addAll(Arrays.asList(line.split("\\s+")));
 
-            if (tokens.size() == 1) {
-                this.commandMap.get(tokens.get(0)).execute(peopleCollection);
+            if (tokens.size() == 2) {
+                arg = tokens.get(1);
+            }
+
+            try {
+                this.commandMap.get(tokens.get(0)).execute(peopleCollection, arg);
+            } catch (NullPointerException e) {
+                System.out.println("Команда не существует! Введите корректное название\n");
             }
 
             tokens.clear();
-            line = userInput.nextLine().toLowerCase();
         }
     }
 }

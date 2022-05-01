@@ -5,7 +5,7 @@ import io.github.zektorum.data.PeopleCollection;
 import java.io.IOException;
 
 public class SaveCommand implements Command {
-    public void execute(PeopleCollection peopleCollection, Object ... args) {
+    public void execute(PeopleCollection peopleCollection, String arg) {
         try {
             System.out.println();
             peopleCollection.saveAsFile();
