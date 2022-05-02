@@ -4,7 +4,15 @@ import io.github.zektorum.data.PeopleCollection;
 
 import java.io.IOException;
 
-public class SaveCommand implements Command {
+public class SaveCommand extends ParentCommand implements Command {
+    public SaveCommand() {
+        super(
+                "save",
+                "save",
+                "сохранить коллекцию в файл"
+        );
+    }
+
     public void execute(PeopleCollection peopleCollection, String arg) {
         try {
             System.out.println();

@@ -7,10 +7,17 @@ import io.github.zektorum.data.Location;
 import io.github.zektorum.data.PeopleCollection;
 import io.github.zektorum.data.Person;
 
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class InsertCommand implements Command {
+public class InsertCommand extends ParentCommand implements Command {
+    public InsertCommand() {
+        super(
+                "insert",
+                "insert key",
+                "добавить новый элемент с заданным ключом"
+        );
+    }
+
     public void execute(PeopleCollection peopleCollection, String arg) {
         Scanner userInput = new Scanner(System.in);
         System.out.print("Введите имя: ");
