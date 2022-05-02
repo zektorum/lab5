@@ -31,11 +31,11 @@ public class Interpreter {
         this.commandMap = new TreeMap<>();
         this.commandNames = new String[] {
                 "info", "show", "insert", "clear", "save",
-                "exit", "average_of_height", "execute_script"
+                "exit", "average_of_height", "execute_script", "help"
         };
         this.commands = new Command[] {
                 new InfoCommand(), new ShowCommand(), new InsertCommand(), new ClearCommand(), new SaveCommand(),
-                new ExitCommand(), new AverageOfHeightCommand(), new ExecuteScriptCommand()
+                new ExitCommand(), new AverageOfHeightCommand(), new ExecuteScriptCommand(), new HelpCommand()
         };
 
         for (int i = 0; i < commandNames.length; ++i) {
