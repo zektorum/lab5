@@ -11,7 +11,7 @@ public class AverageOfHeightCommand extends ParentCommand implements Command {
         );
     }
 
-    public void execute(PeopleCollection peopleCollection, String arg) {
+    public void execute(PeopleCollection peopleCollection, String arg1, String arg2) {
         System.out.printf("%.4f\n\n", peopleCollection.averageOfHeight());
     }
 }

@@ -62,14 +62,16 @@ public class Interpreter {
 
     public void run(PeopleCollection peopleCollection) {
         Scanner userInput = null;
-        String input, promptString, arg = "";
+        String input, promptString, arg1 = "", arg2 = "";
         if (this.interpreterMode == Interpreter.USER_INPUT) {
             userInput = new Scanner(System.in);
             promptString = this.PS1;
         } else {
             try {
                 userInput = new Scanner(new File(this.scriptName));
-            } catch (FileNotFoundException e) {}
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
             promptString = this.PS2;
         }
 
@@ -86,8 +88,11 @@ public class Interpreter {
 
                 tokens.addAll(Arrays.asList(input.split("\\s+")));
 
-                if (tokens.size() == 2) {
-                    arg = tokens.get(1);
+                if (tokens.size() > 1) {
+                    arg1 = tokens.get(1);
+                    if (tokens.size() == 3) {
+                        arg2 = tokens.get(2);
+                    }
                 }
 
                 if (tokens.get(0).equals("execute_script") && tokens.size() == 2 && tokens.get(1).equals(this.scriptName)) {
@@ -98,7 +103,7 @@ public class Interpreter {
                 }
 
                 try {
-                    this.commandMap.get(tokens.get(0)).execute(peopleCollection, arg);
+                    this.commandMap.get(tokens.get(0)).execute(peopleCollection, arg1, arg2);
                 } catch (NullPointerException e) {
                     System.out.println("Команда не существует! Введите корректное название\n");
                 }
@@ -112,7 +117,9 @@ public class Interpreter {
                 System.out.printf("%s ", promptString);
 
             }
-        } catch (NoSuchElementException e) {}
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+        }
         Interpreter.scriptsStack.remove(scriptsStack.size() - 1);
     }
 

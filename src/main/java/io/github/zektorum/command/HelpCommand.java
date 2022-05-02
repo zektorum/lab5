@@ -17,7 +17,7 @@ public class HelpCommand extends ParentCommand implements Command {
         );
     }
 
-    public void execute(PeopleCollection peopleCollection, String arg) {
+    public void execute(PeopleCollection peopleCollection, String arg1, String arg2) {
         Reflections reflections = new Reflections("io.github.zektorum");
         Set<String> subTypes = reflections.get(SubTypes.of(ParentCommand.class));
         try {

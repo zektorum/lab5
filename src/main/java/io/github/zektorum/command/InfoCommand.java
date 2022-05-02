@@ -12,7 +12,7 @@ public class InfoCommand extends ParentCommand implements Command {
         );
     }
 
-    public void execute(PeopleCollection peopleCollection, String arg) {
+    public void execute(PeopleCollection peopleCollection, String arg1, String arg2) {
         peopleCollection.info();
     }
 }

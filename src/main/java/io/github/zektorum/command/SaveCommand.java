@@ -13,7 +13,7 @@ public class SaveCommand extends ParentCommand implements Command {
         );
     }
 
-    public void execute(PeopleCollection peopleCollection, String arg) {
+    public void execute(PeopleCollection peopleCollection, String arg1, String arg2) {
         try {
             System.out.println();
             peopleCollection.saveAsFile();

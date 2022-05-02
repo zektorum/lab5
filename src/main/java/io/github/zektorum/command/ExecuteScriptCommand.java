@@ -15,16 +15,16 @@ public class ExecuteScriptCommand extends ParentCommand implements Command {
         );
     }
 
-    public void execute(PeopleCollection peopleCollection, String arg) {
-        if (!(new File(arg).exists())) {
+    public void execute(PeopleCollection peopleCollection, String arg1, String arg2) {
+        if (!(new File(arg1).exists())) {
             System.out.println("Некорректное имя! Файл не существует\n");
             return;
         }
-        if (Interpreter.scriptsStack.contains(arg)) {
+        if (Interpreter.scriptsStack.contains(arg1)) {
             System.out.println("Ошибка! Попытка циклического запуска скрипта\n");
             return;
         }
-        Interpreter interpreter = new Interpreter(arg);
+        Interpreter interpreter = new Interpreter(arg1);
         interpreter.run(peopleCollection);
     }
 }
