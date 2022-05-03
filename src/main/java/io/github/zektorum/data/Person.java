@@ -1,13 +1,29 @@
 package io.github.zektorum.data;
 
+import com.google.gson.annotations.Expose;
+
 public class Person implements Comparable<Person> {
     private int id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+
+    @Expose
     private String name; //Поле не может быть null, Строка не может быть пустой
+
+    @Expose
     private Coordinates coordinates; //Поле не может быть null
+
+    @Expose
     private double height; //Значение поля должно быть больше 0
+
+    @Expose
     private Color.EyeColor eyeColor; //Поле не может быть null
+
+    @Expose
     private Color.HairColor hairColor; //Поле может быть null
+
+    @Expose
     private Country nationality; //Поле не может быть null
+
+    @Expose
     private Location location; //Поле может быть null
 
     public Person(
