@@ -1,6 +1,6 @@
 package io.github.zektorum.data;
 
-public class Person {
+public class Person implements Comparable<Person> {
     private int id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
@@ -21,6 +21,10 @@ public class Person {
         this.eyeColor = eyeColor;
         this.hairColor = hairColor;
         this.nationality = nationality;
+    }
+
+    public int compareTo(Person person) {
+        return this.name.compareTo(person.getName());
     }
 
     public double getHeight() {
