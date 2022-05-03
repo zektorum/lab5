@@ -106,6 +106,8 @@ public class Interpreter {
                     this.commandMap.get(tokens.get(0)).execute(peopleCollection, arg1, arg2);
                 } catch (NullPointerException e) {
                     System.out.println("Команда не существует! Введите корректное название\n");
+                } catch (NumberFormatException e) {
+                    System.out.println("Неверно введены аргументы!\n");
                 }
 
                 tokens.clear();

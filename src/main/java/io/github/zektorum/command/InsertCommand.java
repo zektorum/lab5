@@ -13,7 +13,7 @@ public class InsertCommand extends ParentCommand implements Command {
         );
     }
 
-    public void execute(PeopleCollection peopleCollection, String arg1, String arg2) {
+    public void execute(PeopleCollection peopleCollection, String arg1, String arg2) throws NumberFormatException {
         PersonCreator pc = new PersonCreator(arg1, Integer.parseInt(arg2));
         peopleCollection.insertElement(pc.create());
     }
