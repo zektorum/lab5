@@ -19,7 +19,18 @@ public class PeopleCollection {
         this.people = new TreeMap<>();
         this.usedIds = new ArrayList<>();
         this.filename = System.getenv("FILENAME");
+        if (structuredData == null) {
+            System.out.println("Введён пустой файл. Завершение работы...");
+            System.exit(-3);
+        }
         for (Person person : structuredData) {
+            if (!PersonFieldsChecker.isValidPerson(person)) {
+                System.out.printf(
+                        "[WARNING] Объект c id %d не соответствует критериям и не добавлен в коллекцию\n",
+                        person.getId()
+                );
+                continue;
+            }
             this.people.put(person.getId(), person);
             this.usedIds.add(person.getId());
         }
@@ -32,6 +43,10 @@ public class PeopleCollection {
 
     public void insertElement(Person person) {
         if (person == null) {
+            return;
+        }
+        if (!PersonFieldsChecker.isValidPerson(person)) {
+            System.out.println("Объект не соответствует критериям и не добавлен в коллекцию");
             return;
         }
         person.setId(this.generateId());
