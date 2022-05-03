@@ -69,17 +69,24 @@ public class PeopleCollection {
     }
 
     public void print(Integer id, Person person) {
+        String format;
+        if (person.getLocation() != null) {
+            format = "Имя: %s\nId:  %s\nРост: %s\nЛокация: (%.1f, %.1f, %.1f)\nКоординаты: (%.1f, %d)\n" +
+                    "Цвет глаз: %s\nЦвет волос: %s\nНациональность: %s\n\n";
+        } else {
+            format = "Имя: %s\nId:  %s\nРост: %s\nЛокация: (%s, %s, %s)\nКоординаты: (%s, %s)\n" +
+                    "Цвет глаз: %s\nЦвет волос: %s\nНациональность: %s\n\n";
+        }
         System.out.printf(
-                "Имя: %s\nId:  %s\nРост: %s\nЛокация: (%.1f, %.1f, %.1f)\nКоординаты: (%.1f, %d)\n" +
-                "Цвет глаз: %s\nЦвет волос: %s\nНациональность: %s\n\n",
+                format,
                 person.getName(),
                 id,
                 person.getHeight(),
-                person.getLocation().getX(),
-                person.getLocation().getY(),
-                person.getLocation().getZ(),
-                person.getCoordinates().getX(),
-                person.getCoordinates().getY(),
+                person.getLocation() != null ? person.getLocation().getX() : null,
+                person.getLocation() != null ? person.getLocation().getY() : null,
+                person.getLocation() != null ? person.getLocation().getZ() : null,
+                person.getCoordinates() != null ? person.getCoordinates().getX() : null,
+                person.getCoordinates() != null ? person.getCoordinates().getY() : null,
                 person.getEyeColor(),
                 person.getHairColor(),
                 person.getNationality()
