@@ -31,7 +31,7 @@ public class Interpreter {
         this.commands = new ParentCommand[] {
                 new InfoCommand(), new ShowCommand(), new InsertCommand(), new ClearCommand(), new SaveCommand(),
                 new ExitCommand(), new AverageOfHeightCommand(), new ExecuteScriptCommand(), new HelpCommand(),
-                new RemoveLowerKeyCommand()
+                new RemoveLowerKeyCommand(), new UpdateCommand()
         };
 
         for (int i = 0; i < commands.length; ++i) {
