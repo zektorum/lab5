@@ -17,9 +17,8 @@ public class Interpreter {
     private final int interpreterMode;
     private final String PS1;
     private final String PS2;
-    private final String[] commandNames;
-    private final Command[] commands;
-    private final Map<String, Command> commandMap;
+    private final ParentCommand[] commands;
+    private final Map<String, ParentCommand> commandMap;
     private String scriptName;
     public static final List<String> scriptsStack = new ArrayList<>();
     public static int USER_INPUT = 0;
@@ -29,19 +28,14 @@ public class Interpreter {
         this.PS1 = "$";
         this.PS2 = ">";
         this.commandMap = new TreeMap<>();
-        this.commandNames = new String[] {
-                "info", "show", "insert", "clear", "save",
-                "exit", "average_of_height", "execute_script", "help",
-                "remove_lower_key"
-        };
-        this.commands = new Command[] {
+        this.commands = new ParentCommand[] {
                 new InfoCommand(), new ShowCommand(), new InsertCommand(), new ClearCommand(), new SaveCommand(),
                 new ExitCommand(), new AverageOfHeightCommand(), new ExecuteScriptCommand(), new HelpCommand(),
                 new RemoveLowerKeyCommand()
         };
 
-        for (int i = 0; i < commandNames.length; ++i) {
-            this.commandMap.put(this.commandNames[i], this.commands[i]);
+        for (int i = 0; i < commands.length; ++i) {
+            this.commandMap.put(this.commands[i].getName(), this.commands[i]);
         }
     }
 
@@ -64,7 +58,7 @@ public class Interpreter {
 
     public void run(PeopleCollection peopleCollection) {
         Scanner userInput = null;
-        String input, promptString, arg1 = "", arg2 = "";
+        String input, promptString, arg1 = "", arg2 = "", arg3 = "";
         if (this.interpreterMode == Interpreter.USER_INPUT) {
             userInput = new Scanner(System.in);
             promptString = this.PS1;
@@ -95,6 +89,10 @@ public class Interpreter {
                     if (tokens.size() == 3) {
                         arg2 = tokens.get(2);
                     }
+                    if (tokens.size() == 4) {
+                        arg2 = tokens.get(2);
+                        arg3 = tokens.get(3);
+                    }
                 }
 
                 if (tokens.get(0).equals("execute_script") && tokens.size() == 2 && tokens.get(1).equals(this.scriptName)) {
@@ -105,7 +103,7 @@ public class Interpreter {
                 }
 
                 try {
-                    this.commandMap.get(tokens.get(0)).execute(peopleCollection, arg1, arg2);
+                    this.commandMap.get(tokens.get(0)).execute(peopleCollection, arg1, arg2, arg3);
                 } catch (NullPointerException e) {
                     System.out.println("Команда не существует! Введите корректное название\n");
                 } catch (NumberFormatException e) {
