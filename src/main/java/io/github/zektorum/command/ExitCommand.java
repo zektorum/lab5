@@ -2,7 +2,7 @@ package io.github.zektorum.command;
 
 import io.github.zektorum.data.PeopleCollection;
 
-public class ExitCommand extends ParentCommand implements Command {
+public class ExitCommand extends ParentCommand {
     public ExitCommand() {
         super(
                 "exit",
@@ -11,7 +11,7 @@ public class ExitCommand extends ParentCommand implements Command {
         );
     }
 
-    public void execute(PeopleCollection peopleCollection, String arg1, String arg2) {
+    public void execute(PeopleCollection peopleCollection, String arg1, String arg2, String arg3) {
         System.exit(5);
     }
 }

@@ -1,6 +1,6 @@
 package io.github.zektorum.command;
 
-public class ParentCommand {
+public abstract class ParentCommand implements Command {
     private String name;
     private String description;
     private String usage;

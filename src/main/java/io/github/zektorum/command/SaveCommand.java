@@ -4,7 +4,7 @@ import io.github.zektorum.data.PeopleCollection;
 
 import java.io.IOException;
 
-public class SaveCommand extends ParentCommand implements Command {
+public class SaveCommand extends ParentCommand {
     public SaveCommand() {
         super(
                 "save",
@@ -13,7 +13,7 @@ public class SaveCommand extends ParentCommand implements Command {
         );
     }
 
-    public void execute(PeopleCollection peopleCollection, String arg1, String arg2) {
+    public void execute(PeopleCollection peopleCollection, String arg1, String arg2, String arg3) {
         try {
             System.out.println();
             peopleCollection.saveAsFile();

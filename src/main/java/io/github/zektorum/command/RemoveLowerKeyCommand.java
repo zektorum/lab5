@@ -5,10 +5,9 @@ import io.github.zektorum.data.PeopleCollection;
 
 import java.util.Map;
 import java.util.SortedMap;
-import java.util.Set;
 import java.util.TreeMap;
 
-public class RemoveLowerKeyCommand extends ParentCommand implements Command {
+public class RemoveLowerKeyCommand extends ParentCommand {
     public RemoveLowerKeyCommand() {
         super(
                 "remove_lower_key",
@@ -17,7 +16,7 @@ public class RemoveLowerKeyCommand extends ParentCommand implements Command {
         );
     }
 
-    public void execute(PeopleCollection people, String arg1, String arg2) {
+    public void execute(PeopleCollection people, String arg1, String arg2, String arg3) {
         try {
             Integer.parseInt(arg1);
         } catch (NumberFormatException e) {

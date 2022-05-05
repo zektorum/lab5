@@ -2,9 +2,7 @@ package io.github.zektorum.command;
 
 import io.github.zektorum.data.*;
 
-import java.util.Scanner;
-
-public class InsertCommand extends ParentCommand implements Command {
+public class InsertCommand extends ParentCommand {
     public InsertCommand() {
         super(
                 "insert",
@@ -13,7 +11,7 @@ public class InsertCommand extends ParentCommand implements Command {
         );
     }
 
-    public void execute(PeopleCollection peopleCollection, String arg1, String arg2) throws NumberFormatException {
+    public void execute(PeopleCollection peopleCollection, String arg1, String arg2, String arg3) throws NumberFormatException {
         PersonCreator pc = new PersonCreator(arg1, Integer.parseInt(arg2));
         peopleCollection.insertElement(pc.create());
     }

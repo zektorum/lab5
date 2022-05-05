@@ -5,7 +5,7 @@ import io.github.zektorum.data.PeopleCollection;
 
 import java.io.File;
 
-public class ExecuteScriptCommand extends ParentCommand implements Command {
+public class ExecuteScriptCommand extends ParentCommand {
     public ExecuteScriptCommand() {
         super(
                 "execute_script",
@@ -15,7 +15,7 @@ public class ExecuteScriptCommand extends ParentCommand implements Command {
         );
     }
 
-    public void execute(PeopleCollection peopleCollection, String arg1, String arg2) {
+    public void execute(PeopleCollection peopleCollection, String arg1, String arg2, String arg3) {
         if (!(new File(arg1).exists())) {
             System.out.println("Некорректное имя! Файл не существует\n");
             return;

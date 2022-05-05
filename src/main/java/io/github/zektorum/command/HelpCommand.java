@@ -1,6 +1,5 @@
 package io.github.zektorum.command;
 
-import io.github.zektorum.command.ParentCommand;
 import io.github.zektorum.data.PeopleCollection;
 
 import java.util.Set;
@@ -8,7 +7,7 @@ import org.reflections.Reflections;
 
 import static org.reflections.scanners.Scanners.SubTypes;
 
-public class HelpCommand extends ParentCommand implements Command {
+public class HelpCommand extends ParentCommand {
     public HelpCommand() {
         super(
                 "help",
@@ -17,7 +16,7 @@ public class HelpCommand extends ParentCommand implements Command {
         );
     }
 
-    public void execute(PeopleCollection peopleCollection, String arg1, String arg2) {
+    public void execute(PeopleCollection peopleCollection, String arg1, String arg2, String arg3) {
         Reflections reflections = new Reflections("io.github.zektorum");
         Set<String> subTypes = reflections.get(SubTypes.of(ParentCommand.class));
         try {
