@@ -23,6 +23,7 @@ public class PeopleCollection {
             System.out.println("Введён пустой файл. Завершение работы...");
             System.exit(-3);
         }
+        int i = 1;
         for (Person person : structuredData) {
             if (!PersonFieldsChecker.isValidPerson(person)) {
                 System.out.printf(
@@ -31,6 +32,7 @@ public class PeopleCollection {
                 );
                 continue;
             }
+            person.setId(i++);
             this.people.put(person.getId(), person);
             this.usedIds.add(person.getId());
         }

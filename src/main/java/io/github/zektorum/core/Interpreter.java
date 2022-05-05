@@ -31,11 +31,13 @@ public class Interpreter {
         this.commandMap = new TreeMap<>();
         this.commandNames = new String[] {
                 "info", "show", "insert", "clear", "save",
-                "exit", "average_of_height", "execute_script", "help"
+                "exit", "average_of_height", "execute_script", "help",
+                "remove_lower_key"
         };
         this.commands = new Command[] {
                 new InfoCommand(), new ShowCommand(), new InsertCommand(), new ClearCommand(), new SaveCommand(),
-                new ExitCommand(), new AverageOfHeightCommand(), new ExecuteScriptCommand(), new HelpCommand()
+                new ExitCommand(), new AverageOfHeightCommand(), new ExecuteScriptCommand(), new HelpCommand(),
+                new RemoveLowerKeyCommand()
         };
 
         for (int i = 0; i < commandNames.length; ++i) {
@@ -45,13 +47,13 @@ public class Interpreter {
 
     public Interpreter() {
         this.interpreterMode = Interpreter.USER_INPUT;
-        this.scriptsStack.add("Main");
+        Interpreter.scriptsStack.add("Main");
     }
 
     public Interpreter(String scriptName) {
         this.interpreterMode = Interpreter.SCRIPT_INPUT;
         this.scriptName = scriptName;
-        this.scriptsStack.add(scriptName);
+        Interpreter.scriptsStack.add(scriptName);
     }
 
     public void printScriptsStack() {
