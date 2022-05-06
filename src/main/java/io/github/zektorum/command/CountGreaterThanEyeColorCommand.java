@@ -6,7 +6,7 @@ import io.github.zektorum.data.PeopleCollection;
 
 import java.util.Map;
 
-public class CountGreaterThanEyeColorCommand extends ParentCommand {
+public class CountGreaterThanEyeColorCommand extends BaseCommand {
     public CountGreaterThanEyeColorCommand() {
         super(
                 "count_greater_than_eye_color",

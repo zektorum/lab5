@@ -2,7 +2,7 @@ package io.github.zektorum.command;
 
 import io.github.zektorum.data.PeopleCollection;
 
-public class ClearCommand extends ParentCommand {
+public class ClearCommand extends BaseCommand {
     public ClearCommand() {
         super(
                 "clear",

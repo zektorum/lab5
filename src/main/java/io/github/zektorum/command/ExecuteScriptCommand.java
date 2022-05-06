@@ -5,7 +5,7 @@ import io.github.zektorum.data.PeopleCollection;
 
 import java.io.File;
 
-public class ExecuteScriptCommand extends ParentCommand {
+public class ExecuteScriptCommand extends BaseCommand {
     public ExecuteScriptCommand() {
         super(
                 "execute_script",

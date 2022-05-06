@@ -1,11 +1,11 @@
 package io.github.zektorum.command;
 
-public abstract class ParentCommand implements Command {
+public abstract class BaseCommand implements Command {
     private String name;
     private String description;
     private String usage;
 
-    public ParentCommand(String name, String usage, String description) {
+    public BaseCommand(String name, String usage, String description) {
         this.name = name;
         this.usage = usage;
         this.description = description;

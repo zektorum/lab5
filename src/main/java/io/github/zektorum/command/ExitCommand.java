@@ -2,7 +2,7 @@ package io.github.zektorum.command;
 
 import io.github.zektorum.data.PeopleCollection;
 
-public class ExitCommand extends ParentCommand {
+public class ExitCommand extends BaseCommand {
     public ExitCommand() {
         super(
                 "exit",

@@ -4,7 +4,7 @@ import io.github.zektorum.data.Person;
 import io.github.zektorum.data.PeopleCollection;
 import io.github.zektorum.data.PersonCreator;
 
-public class ReplaceIfLowerCommand extends ParentCommand {
+public class ReplaceIfLowerCommand extends BaseCommand {
     public ReplaceIfLowerCommand() {
         super(
                 "replace_if_lower",

@@ -2,7 +2,7 @@ package io.github.zektorum.command;
 
 import io.github.zektorum.data.PeopleCollection;
 
-public class AverageOfHeightCommand extends ParentCommand {
+public class AverageOfHeightCommand extends BaseCommand {
     public AverageOfHeightCommand() {
         super(
                 "average_of_height",

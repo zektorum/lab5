@@ -7,7 +7,7 @@ import io.github.zektorum.data.PersonCreator;
 import java.util.TreeMap;
 import java.util.Map;
 
-public class RemoveLowerCommand extends ParentCommand {
+public class RemoveLowerCommand extends BaseCommand {
     public RemoveLowerCommand() {
         super(
                 "remove_lower",

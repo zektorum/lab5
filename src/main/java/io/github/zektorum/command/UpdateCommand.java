@@ -4,7 +4,7 @@ import io.github.zektorum.data.PeopleCollection;
 import io.github.zektorum.data.Person;
 import io.github.zektorum.data.PersonCreator;
 
-public class UpdateCommand extends ParentCommand {
+public class UpdateCommand extends BaseCommand {
     public UpdateCommand() {
         super(
                 "update",

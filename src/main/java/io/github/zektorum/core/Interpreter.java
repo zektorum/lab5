@@ -17,8 +17,8 @@ public class Interpreter {
     private final int interpreterMode;
     private final String PS1;
     private final String PS2;
-    private final ParentCommand[] commands;
-    private final Map<String, ParentCommand> commandMap;
+    private final BaseCommand[] commands;
+    private final Map<String, BaseCommand> commandMap;
     private String scriptName;
     public static final List<String> scriptsStack = new ArrayList<>();
     public static int USER_INPUT = 0;
@@ -28,7 +28,7 @@ public class Interpreter {
         this.PS1 = "$";
         this.PS2 = ">";
         this.commandMap = new TreeMap<>();
-        this.commands = new ParentCommand[] {
+        this.commands = new BaseCommand[] {
                 new InfoCommand(), new ShowCommand(), new InsertCommand(), new ClearCommand(), new SaveCommand(),
                 new ExitCommand(), new AverageOfHeightCommand(), new ExecuteScriptCommand(), new HelpCommand(),
                 new RemoveLowerKeyCommand(), new UpdateCommand(), new RemoveLowerCommand(), new RemoveKeyCommand(),

@@ -2,7 +2,7 @@ package io.github.zektorum.command;
 
 import io.github.zektorum.data.*;
 
-public class InsertCommand extends ParentCommand {
+public class InsertCommand extends BaseCommand {
     public InsertCommand() {
         super(
                 "insert",

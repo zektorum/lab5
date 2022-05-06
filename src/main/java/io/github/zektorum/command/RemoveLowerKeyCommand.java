@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-public class RemoveLowerKeyCommand extends ParentCommand {
+public class RemoveLowerKeyCommand extends BaseCommand {
     public RemoveLowerKeyCommand() {
         super(
                 "remove_lower_key",

@@ -2,7 +2,7 @@ package io.github.zektorum.command;
 
 import io.github.zektorum.data.PeopleCollection;
 
-public class InfoCommand extends ParentCommand {
+public class InfoCommand extends BaseCommand {
     public InfoCommand() {
         super(
                 "info",

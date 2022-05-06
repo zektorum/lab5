@@ -4,7 +4,7 @@ import io.github.zektorum.data.PeopleCollection;
 
 import java.io.IOException;
 
-public class SaveCommand extends ParentCommand {
+public class SaveCommand extends BaseCommand {
     public SaveCommand() {
         super(
                 "save",

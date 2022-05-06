@@ -7,7 +7,7 @@ import org.reflections.Reflections;
 
 import static org.reflections.scanners.Scanners.SubTypes;
 
-public class HelpCommand extends ParentCommand {
+public class HelpCommand extends BaseCommand {
     public HelpCommand() {
         super(
                 "help",
@@ -18,11 +18,11 @@ public class HelpCommand extends ParentCommand {
 
     public void execute(PeopleCollection peopleCollection, String arg1, String arg2, String arg3) {
         Reflections reflections = new Reflections("io.github.zektorum");
-        Set<String> subTypes = reflections.get(SubTypes.of(ParentCommand.class));
+        Set<String> subTypes = reflections.get(SubTypes.of(BaseCommand.class));
         try {
-            ParentCommand command;
+            BaseCommand command;
             for (String type : subTypes) {
-                command = (ParentCommand)Class.forName(type).newInstance();
+                command = (BaseCommand)Class.forName(type).newInstance();
                 System.out.printf(
                         "%s\n\t%s\n\n",
                         command.getUsage(),

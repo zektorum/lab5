@@ -2,7 +2,7 @@ package io.github.zektorum.command;
 
 import io.github.zektorum.data.PeopleCollection;
 
-public class RemoveKeyCommand extends ParentCommand {
+public class RemoveKeyCommand extends BaseCommand {
     public RemoveKeyCommand() {
         super(
                 "remove_key",
