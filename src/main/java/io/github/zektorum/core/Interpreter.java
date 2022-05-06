@@ -32,7 +32,7 @@ public class Interpreter {
                 new InfoCommand(), new ShowCommand(), new InsertCommand(), new ClearCommand(), new SaveCommand(),
                 new ExitCommand(), new AverageOfHeightCommand(), new ExecuteScriptCommand(), new HelpCommand(),
                 new RemoveLowerKeyCommand(), new UpdateCommand(), new RemoveLowerCommand(), new RemoveKeyCommand(),
-                new ReplaceIfLowerCommand()
+                new ReplaceIfLowerCommand(), new CountGreaterThanEyeColorCommand()
         };
 
         for (int i = 0; i < commands.length; ++i) {
