@@ -29,10 +29,11 @@ public class Interpreter {
         this.PS2 = ">";
         this.commandMap = new TreeMap<>();
         this.commands = new BaseCommand[] {
-                new InfoCommand(), new ShowCommand(), new InsertCommand(), new ClearCommand(), new SaveCommand(),
-                new ExitCommand(), new AverageOfHeightCommand(), new ExecuteScriptCommand(), new HelpCommand(),
-                new RemoveLowerKeyCommand(), new UpdateCommand(), new RemoveLowerCommand(), new RemoveKeyCommand(),
-                new ReplaceIfLowerCommand(), new CountGreaterThanEyeColorCommand()
+                new InfoCommand(), new ShowCommand(), new InsertCommand(), new ClearCommand(),
+                new SaveCommand(), new ExitCommand(), new AverageOfHeightCommand(), new ExecuteScriptCommand(),
+                new HelpCommand(), new RemoveLowerKeyCommand(), new UpdateCommand(), new RemoveLowerCommand(),
+                new RemoveKeyCommand(), new ReplaceIfLowerCommand(), new CountGreaterThanEyeColorCommand(),
+                new PrintFieldAscendingLocationCommand()
         };
 
         for (int i = 0; i < commands.length; ++i) {
