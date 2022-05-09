@@ -1,5 +1,6 @@
 package io.github.zektorum.command;
 
+import io.github.zektorum.core.Interpreter;
 import io.github.zektorum.data.Person;
 import io.github.zektorum.data.PeopleCollection;
 import io.github.zektorum.data.PersonCreator;
@@ -23,7 +24,14 @@ public class ReplaceIfLowerCommand extends BaseCommand {
         }
 
         PersonCreator pc = new PersonCreator(arg2, Integer.parseInt(arg3));
-        Person person = pc.create();
+
+        Person person;
+        if (!Interpreter.scriptsStack.get(Interpreter.scriptsStack.size() - 1).equals("Main")) {
+            person = pc.create(Interpreter.input);
+        } else {
+            person = pc.create();
+        }
+
         if (person.compareTo(people.getPeopleCollection().get(Integer.parseInt(arg1))) < 0) {
             people.getPeopleCollection().put(Integer.parseInt(arg1), person);
         }

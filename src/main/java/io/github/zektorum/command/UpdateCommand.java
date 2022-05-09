@@ -1,5 +1,6 @@
 package io.github.zektorum.command;
 
+import io.github.zektorum.core.Interpreter;
 import io.github.zektorum.data.PeopleCollection;
 import io.github.zektorum.data.Person;
 import io.github.zektorum.data.PersonCreator;
@@ -21,7 +22,13 @@ public class UpdateCommand extends BaseCommand {
             System.out.println("Некорректные аргументы!\n");
             return;
         }
-        Person person = new PersonCreator(arg2, Double.parseDouble(arg3)).create();
+        PersonCreator pc = new PersonCreator(arg2, Double.parseDouble(arg3));
+        Person person;
+        if (!Interpreter.scriptsStack.get(Interpreter.scriptsStack.size() - 1).equals("Main")) {
+            person = pc.create(Interpreter.input);
+        } else {
+            person = pc.create();
+        }
         int id = Integer.parseInt(arg1);
         person.setId(id);
         people.getPeopleCollection().put(id, person);

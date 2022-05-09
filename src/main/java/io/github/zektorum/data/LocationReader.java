@@ -13,6 +13,14 @@ public class LocationReader {
         return new Location(x, y, z);
     }
 
+    public Location readFromFile(Scanner input) {
+        double x = this.readLocationXFromFile(input);
+        Float y = this.readLocationYFromFile(input);
+        Double z = this.readLocationZFromFile(input);
+
+        return new Location(x, y, z);
+    }
+
     public double readLocationX() {
         String x_MIN = "-1.7976931348623157*10^308";
         String x_MAX = "1.7976931348623157*10^308";
@@ -89,5 +97,29 @@ public class LocationReader {
             }
         }
         return z;
+    }
+
+    public double readLocationXFromFile(Scanner input) {
+        try {
+            return input.nextDouble();
+        } catch (InputMismatchException e) {
+            return .0;
+        }
+    }
+
+    public Float readLocationYFromFile(Scanner input) {
+        try {
+            return input.nextFloat();
+        } catch (InputMismatchException e) {
+            return .0f;
+        }
+    }
+
+    public Double readLocationZFromFile(Scanner input) {
+        try {
+            return input.nextDouble();
+        } catch (InputMismatchException e) {
+            return .0;
+        }
     }
 }

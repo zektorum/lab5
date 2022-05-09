@@ -21,6 +21,7 @@ public class Interpreter {
     private final Map<String, BaseCommand> commandMap;
     private String scriptName;
     public static final List<String> scriptsStack = new ArrayList<>();
+    public static Scanner input;
     public static int USER_INPUT = 0;
     public static int SCRIPT_INPUT = 1;
 
@@ -74,6 +75,7 @@ public class Interpreter {
             promptString = this.PS2;
         }
 
+        Interpreter.input = userInput;
         List<String> tokens = new ArrayList<>();
         System.out.printf("%s ", promptString);
         try {
@@ -119,8 +121,12 @@ public class Interpreter {
                     break;
                 }
 
+                Interpreter.input = userInput;
                 System.out.printf("%s ", promptString);
 
+                arg1 = "";
+                arg2 = "";
+                arg3 = "";
             }
         } catch (NoSuchElementException e) {
             e.printStackTrace();

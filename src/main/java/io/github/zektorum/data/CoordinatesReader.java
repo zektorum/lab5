@@ -11,6 +11,12 @@ public class CoordinatesReader {
         return new Coordinates(x, y);
     }
 
+    public Coordinates readFromFile(Scanner input) {
+        double x = this.readCoordinateXFromFile(input);
+        Integer y = this.readCoordinateYFromFile(input);
+        return new Coordinates(x, y);
+    }
+
     private double readCoordinateX() {
         String x_MAX = "1.7976931348623157*10^308";
         System.out.printf("Диапазон значений: x ∈ (-183, %s]\n", x_MAX);
@@ -59,5 +65,20 @@ public class CoordinatesReader {
             }
         }
         return y;
+    }
+
+    private double readCoordinateXFromFile(Scanner input) {
+        try {
+            return input.nextDouble();
+        } catch (InputMismatchException e) {
+            return -183.;        }
+    }
+
+    private Integer readCoordinateYFromFile(Scanner input) {
+        try {
+            return input.nextInt();
+        } catch (InputMismatchException e) {
+            return 750;
+        }
     }
 }
