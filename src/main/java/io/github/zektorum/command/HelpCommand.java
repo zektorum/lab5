@@ -2,10 +2,12 @@ package io.github.zektorum.command;
 
 import io.github.zektorum.data.PeopleCollection;
 
-import java.util.Set;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.reflections.Reflections;
-
 import static org.reflections.scanners.Scanners.SubTypes;
+
+import java.util.Set;
 
 public class HelpCommand extends BaseCommand {
     public HelpCommand() {
@@ -21,6 +23,7 @@ public class HelpCommand extends BaseCommand {
             System.out.println("Некорректные аргументы!");
             return;
         }
+        Logger.getRootLogger().setLevel(Level.OFF);
         Reflections reflections = new Reflections("io.github.zektorum");
         Set<String> subTypes = reflections.get(SubTypes.of(BaseCommand.class));
         try {
