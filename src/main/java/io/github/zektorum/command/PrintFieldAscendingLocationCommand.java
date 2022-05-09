@@ -17,6 +17,10 @@ public class PrintFieldAscendingLocationCommand extends BaseCommand {
     }
 
     public void execute(PeopleCollection peopleCollection, String arg1, String arg2, String arg3) {
+        if (!(arg1.equals("") && arg2.equals("") && arg3.equals(""))) {
+            System.out.println("Некорректные аргументы!");
+            return;
+        }
         TreeMap<Integer, Person> locations = new TreeMap<>();
         Location location;
         for (Map.Entry element: peopleCollection.getPeopleCollection().entrySet()) {

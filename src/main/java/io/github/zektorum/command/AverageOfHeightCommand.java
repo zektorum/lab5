@@ -12,6 +12,10 @@ public class AverageOfHeightCommand extends BaseCommand {
     }
 
     public void execute(PeopleCollection peopleCollection, String arg1, String arg2, String arg3) {
+        if (!(arg1.equals("") && arg2.equals("") && arg3.equals(""))) {
+            System.out.println("Некорректные аргументы!");
+            return;
+        }
         System.out.printf("%.4f\n\n", peopleCollection.averageOfHeight());
     }
 }

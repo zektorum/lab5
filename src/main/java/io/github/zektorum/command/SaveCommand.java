@@ -14,6 +14,10 @@ public class SaveCommand extends BaseCommand {
     }
 
     public void execute(PeopleCollection peopleCollection, String arg1, String arg2, String arg3) {
+        if (!(arg1.equals("") && arg2.equals("") && arg3.equals(""))) {
+            System.out.println("Некорректные аргументы!");
+            return;
+        }
         try {
             System.out.println();
             peopleCollection.saveAsFile();
