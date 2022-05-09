@@ -68,7 +68,8 @@ public class Interpreter {
             try {
                 userInput = new Scanner(new File(this.scriptName));
             } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                System.out.println("Ошибка! Файл не существует\n");
+                return;
             }
             promptString = this.PS2;
         }
