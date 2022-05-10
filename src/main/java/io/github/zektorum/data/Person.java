@@ -2,6 +2,8 @@ package io.github.zektorum.data;
 
 import com.google.gson.annotations.Expose;
 
+import java.time.ZonedDateTime;
+
 public class Person implements Comparable<Person> {
     private int id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
 
@@ -26,6 +28,9 @@ public class Person implements Comparable<Person> {
     @Expose
     private Location location; //Поле может быть null
 
+    @Expose
+    private ZonedDateTime creationDate;
+
     public Person(
             String name, double height, Location location, Coordinates coordinates,
             Color.EyeColor eyeColor, Color.HairColor hairColor, Country nationality
@@ -37,10 +42,15 @@ public class Person implements Comparable<Person> {
         this.eyeColor = eyeColor;
         this.hairColor = hairColor;
         this.nationality = nationality;
+        this.creationDate = ZonedDateTime.now();
     }
 
     public int compareTo(Person person) {
         return this.name.compareTo(person.getName());
+    }
+
+    public ZonedDateTime getCreationDate() {
+        return this.creationDate;
     }
 
     public double getHeight() {

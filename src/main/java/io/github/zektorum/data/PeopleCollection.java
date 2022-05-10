@@ -1,7 +1,7 @@
 package io.github.zektorum.data;
 
 import io.github.zektorum.io.FileWriter;
-import io.github.zektorum.io.JsonWriter;
+import io.github.zektorum.io.SerializableWriter;
 
 import java.io.IOException;
 import java.time.ZonedDateTime;
@@ -23,7 +23,6 @@ public class PeopleCollection {
             System.out.println("Введён пустой файл. Завершение работы...");
             System.exit(-3);
         }
-        int i = 1;
         for (Person person : structuredData) {
             if (!PersonFieldsChecker.isValidPerson(person)) {
                 System.out.printf(
@@ -32,7 +31,7 @@ public class PeopleCollection {
                 );
                 continue;
             }
-            person.setId(i++);
+            person.setId(this.generateId());
             this.people.put(person.getId(), person);
             this.usedIds.add(person.getId());
         }
@@ -41,26 +40,6 @@ public class PeopleCollection {
 
     public TreeMap<Integer, Person> getPeopleCollection() {
         return this.people;
-    }
-
-    public void insertElement(Person person) {
-        if (person == null) {
-            return;
-        }
-        if (!PersonFieldsChecker.isValidPerson(person)) {
-            System.out.println("Объект не соответствует критериям и не добавлен в коллекцию");
-            return;
-        }
-        person.setId(this.generateId());
-        this.people.put(person.getId(), person);
-
-    }
-
-    public void updateValueById(int id, Person newElement) {
-        if (this.isValidId(id)) {
-            newElement.setId(id);
-            this.people.replace(id, newElement);
-        }
     }
 
     public void removeElementById(int id) {
@@ -79,19 +58,19 @@ public class PeopleCollection {
         Person[] peopleArray = new Person[this.people.size()];
         int i = 0;
         for (Map.Entry<Integer, Person> person : this.people.entrySet()) {
-            peopleArray[i] = (Person)person.getValue();
+            peopleArray[i] = person.getValue();
             ++i;
         }
-        writer.write(new JsonWriter(), peopleArray);
+        writer.write(new SerializableWriter(), peopleArray);
     }
 
     public void print(Integer id, Person person) {
         String format;
         if (person.getLocation() != null) {
-            format = "Имя: %s\nId:  %s\nРост: %s\nЛокация: (%.1f, %.1f, %.1f)\nКоординаты: (%.1f, %d)\n" +
-                    "Цвет глаз: %s\nЦвет волос: %s\nНациональность: %s\n\n";
+            format = "Имя: %s\nId:  %s\nРост: %s\nДата создания: %s\nЛокация: (%.1f, %.1f, %.1f)\nКоординаты: " +
+                    "(%.1f, %d)\nЦвет глаз: %s\nЦвет волос: %s\nНациональность: %s\n\n";
         } else {
-            format = "Имя: %s\nId:  %s\nРост: %s\nЛокация: (%s, %s, %s)\nКоординаты: (%s, %s)\n" +
+            format = "Имя: %s\nId:  %s\nРост: %s\nДата создания: %s\nЛокация: (%s, %s, %s)\nКоординаты: (%s, %s)\n" +
                     "Цвет глаз: %s\nЦвет волос: %s\nНациональность: %s\n\n";
         }
         System.out.printf(
@@ -99,6 +78,7 @@ public class PeopleCollection {
                 person.getName(),
                 id,
                 person.getHeight(),
+                person.getCreationDate().toString(),
                 person.getLocation() != null ? person.getLocation().getX() : null,
                 person.getLocation() != null ? person.getLocation().getY() : null,
                 person.getLocation() != null ? person.getLocation().getZ() : null,
@@ -108,10 +88,6 @@ public class PeopleCollection {
                 person.getHairColor(),
                 person.getNationality()
         );
-    }
-
-    public void printLocation() {
-        this.people.forEach((id, person) -> System.out.println(person.getLocation()));
     }
 
     public void showAll() {
@@ -128,20 +104,11 @@ public class PeopleCollection {
     }
 
     public double averageOfHeight() {
-        double average = 0, sum = 0;
+        double sum = 0;
         for (Map.Entry<Integer, Person> person : this.people.entrySet()) {
             sum += person.getValue().getHeight();
         }
         return sum / this.people.size();
-    }
-
-    private void changeIdIfNotValid(Person person) {
-        int personId = person.getId();
-        if (this.usedIds.contains(personId)) {
-            person.setId(this.generateId());
-        } else {
-            this.usedIds.add(person.getId());
-        }
     }
 
     private int generateId() {

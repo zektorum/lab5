@@ -3,7 +3,7 @@ package io.github.zektorum.core;
 import io.github.zektorum.data.PeopleCollection;
 import io.github.zektorum.data.Person;
 import io.github.zektorum.io.FileReader;
-import io.github.zektorum.io.JsonReader;
+import io.github.zektorum.io.SerializableReader;
 
 import java.io.FileNotFoundException;
 
@@ -22,7 +22,7 @@ public class Application {
                 System.exit(8);
             }
             FileReader fileReader = new FileReader(filename);
-            Person[] structuredData = fileReader.read(new JsonReader());
+            Person[] structuredData = fileReader.read(new SerializableReader());
 
             PeopleCollection peopleCollection = new PeopleCollection(structuredData);
 
