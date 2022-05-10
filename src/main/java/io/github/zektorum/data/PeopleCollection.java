@@ -1,5 +1,6 @@
 package io.github.zektorum.data;
 
+import io.github.zektorum.core.Interpreter;
 import io.github.zektorum.io.FileWriter;
 import io.github.zektorum.io.SerializableWriter;
 
@@ -101,6 +102,20 @@ public class PeopleCollection {
                 this.initializationDate,
                 this.people.size()
         );
+    }
+
+    public void insert(Integer key, String name, int height) {
+        PersonCreator pc = new PersonCreator(name, height);
+        Person person;
+        if (!Interpreter.scriptsStack.get(Interpreter.scriptsStack.size() - 1).equals("Main")) {
+            person = pc.create(Interpreter.input);
+            person.setId(generateId());
+            this.people.put(key, person);
+        } else {
+            person = pc.create();
+            person.setId(generateId());
+            this.people.put(key, person);
+        }
     }
 
     public double averageOfHeight() {
