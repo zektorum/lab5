@@ -29,8 +29,6 @@ public class UpdateCommand extends BaseCommand {
         } else {
             person = pc.create();
         }
-        int id = Integer.parseInt(arg1);
-        person.setId(id);
-        people.getPeopleCollection().put(id, person);
+        people.getPeopleCollection().put(Integer.parseInt(arg1), person);
     }
 }

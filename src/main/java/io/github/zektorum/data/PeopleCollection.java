@@ -32,7 +32,7 @@ public class PeopleCollection {
                 continue;
             }
             person.setId(this.generateId());
-            this.people.put(person.getId(), person);
+            this.people.put(person.getName().hashCode(), person);
             this.usedIds.add(person.getId());
         }
         this.initializationDate = ZonedDateTime.now();
@@ -42,9 +42,9 @@ public class PeopleCollection {
         return this.people;
     }
 
-    public void removeElementById(int id) {
-        if (this.isValidId(id)){
-            this.people.remove(id);
+    public void removeElementByKey(int key) {
+        if (this.isValidId(key)){
+            this.people.remove(key);
         }
     }
 
@@ -64,7 +64,7 @@ public class PeopleCollection {
         writer.write(new SerializableWriter(), peopleArray);
     }
 
-    public void print(Integer id, Person person) {
+    public void print(Integer key, Person person) {
         String format;
         if (person.getLocation() != null) {
             format = "Имя: %s\nId:  %s\nРост: %s\nДата создания: %s\nЛокация: (%.1f, %.1f, %.1f)\nКоординаты: " +
@@ -76,7 +76,7 @@ public class PeopleCollection {
         System.out.printf(
                 format,
                 person.getName(),
-                id,
+                person.getId(),
                 person.getHeight(),
                 person.getCreationDate().toString(),
                 person.getLocation() != null ? person.getLocation().getX() : null,

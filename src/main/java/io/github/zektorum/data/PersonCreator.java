@@ -1,6 +1,5 @@
 package io.github.zektorum.data;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class PersonCreator {

@@ -11,7 +11,7 @@ public class RemoveLowerKeyCommand extends BaseCommand {
     public RemoveLowerKeyCommand() {
         super(
                 "remove_lower_key",
-                "remove_lower_key null",
+                "remove_lower_key key",
                 "удалить из коллекции все элементы, ключ которых меньше, чем заданный"
         );
     }
@@ -32,7 +32,7 @@ public class RemoveLowerKeyCommand extends BaseCommand {
         );
 
         for (Map.Entry<Integer, Person> element : lowerElements.entrySet()) {
-            people.removeElementById(element.getKey());
+            people.removeElementByKey(element.getKey());
         }
         System.out.println();
     }

@@ -16,6 +16,7 @@ public class ExitCommand extends BaseCommand {
             System.out.println("Некорректные аргументы!");
             return;
         }
-        System.exit(5);
+        System.out.println("Завершение работы без сохранения...");
+        System.exit(0);
     }
 }
