@@ -20,6 +20,10 @@ public class ExecuteScriptCommand extends BaseCommand {
             System.out.println("Некорректное имя! Файл не существует\n");
             return;
         }
+        if (!new File(arg1).canRead()) {
+            System.out.println("Отсутствуют права на чтение!\n");
+            return;
+        }
         if (Interpreter.scriptsStack.contains(arg1)) {
             System.out.println("Ошибка! Попытка циклического запуска скрипта\n");
             return;
