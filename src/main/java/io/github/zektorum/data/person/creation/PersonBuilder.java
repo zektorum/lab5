@@ -1,4 +1,6 @@
-package io.github.zektorum.data;
+package io.github.zektorum.data.person.creation;
+
+import io.github.zektorum.data.person.Person;
 
 public interface PersonBuilder {
     PersonBuilder withName();

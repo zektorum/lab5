@@ -1,6 +1,11 @@
-package io.github.zektorum.data;
+package io.github.zektorum.data.collection;
 
 import io.github.zektorum.core.Interpreter;
+import io.github.zektorum.data.person.*;
+import io.github.zektorum.data.person.creation.Director;
+import io.github.zektorum.data.person.creation.PersonBuilder;
+import io.github.zektorum.data.person.creation.PersonBuilderFromFile;
+import io.github.zektorum.data.person.creation.PersonBuilderFromUserInput;
 import io.github.zektorum.io.FileWriter;
 import io.github.zektorum.io.SerializableWriter;
 
@@ -104,18 +109,18 @@ public class PeopleCollection {
         );
     }
 
-    public void insert(Integer key, String name, int height) {
-        PersonCreator pc = new PersonCreator(name, height);
+    public void insert(Integer key) {
+        PersonBuilder personBuilder;
         Person person;
         if (!Interpreter.scriptsStack.get(Interpreter.scriptsStack.size() - 1).equals("Main")) {
-            person = pc.create(Interpreter.input);
-            person.setId(generateId());
-            this.people.put(key, person);
+            personBuilder = new PersonBuilderFromFile(Interpreter.input);
         } else {
-            person = pc.create();
-            person.setId(generateId());
-            this.people.put(key, person);
+            personBuilder = new PersonBuilderFromUserInput();
         }
+        Director director = new Director(personBuilder);
+        person = director.createPerson();
+        person.setId(generateId());
+        this.people.put(key, person);
     }
 
     public double averageOfHeight() {

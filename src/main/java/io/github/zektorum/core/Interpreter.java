@@ -1,7 +1,7 @@
 package io.github.zektorum.core;
 
 import io.github.zektorum.command.*;
-import io.github.zektorum.data.PeopleCollection;
+import io.github.zektorum.data.collection.PeopleCollection;
 
 import java.util.ArrayList;
 import java.util.Arrays;

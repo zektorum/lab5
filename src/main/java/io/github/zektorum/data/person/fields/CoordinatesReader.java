@@ -1,4 +1,7 @@
-package io.github.zektorum.data;
+package io.github.zektorum.data.person.fields;
+
+import io.github.zektorum.data.person.PersonFieldsChecker;
+import io.github.zektorum.data.person.fields.Coordinates;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

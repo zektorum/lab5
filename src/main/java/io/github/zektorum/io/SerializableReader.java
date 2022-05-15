@@ -7,7 +7,7 @@ import com.google.gson.stream.JsonWriter;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.TypeAdapter;
 
-import io.github.zektorum.data.Person;
+import io.github.zektorum.data.person.Person;
 
 import java.io.IOException;
 import java.time.ZonedDateTime;

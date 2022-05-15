@@ -1,6 +1,6 @@
 package io.github.zektorum.command;
 
-import io.github.zektorum.data.PeopleCollection;
+import io.github.zektorum.data.collection.PeopleCollection;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;

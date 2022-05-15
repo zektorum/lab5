@@ -1,6 +1,10 @@
-package io.github.zektorum.data;
+package io.github.zektorum.data.person;
 
 import com.google.gson.annotations.Expose;
+import io.github.zektorum.data.person.fields.Color;
+import io.github.zektorum.data.person.fields.Coordinates;
+import io.github.zektorum.data.person.fields.Country;
+import io.github.zektorum.data.person.fields.Location;
 
 import java.time.ZonedDateTime;
 
@@ -53,12 +57,8 @@ public class Person implements Comparable<Person> {
         return this.creationDate;
     }
 
-    public double getHeight() {
-        return this.height;
-    }
-
-    public Location getLocation() {
-        return this.location;
+    public String getName() {
+        return this.name;
     }
 
     public Coordinates getCoordinates() {
@@ -73,12 +73,44 @@ public class Person implements Comparable<Person> {
         return this.hairColor;
     }
 
+    public double getHeight() {
+        return this.height;
+    }
+
     public Country getNationality() {
         return this.nationality;
     }
 
-    public String getName() {
-        return this.name;
+    public Location getLocation() {
+        return this.location;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public void setEyeColor(Color.EyeColor eyeColor) {
+        this.eyeColor = eyeColor;
+    }
+
+    public void setHairColor(Color.HairColor hairColor) {
+        this.hairColor = hairColor;
+    }
+
+    public void setNationality(Country nationality) {
+        this.nationality = nationality;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public int getId() {

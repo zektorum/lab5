@@ -1,4 +1,4 @@
-package io.github.zektorum.data;
+package io.github.zektorum.data.person.fields;
 
 public class Color {
     public enum HairColor {

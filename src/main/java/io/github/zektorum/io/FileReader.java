@@ -1,6 +1,6 @@
 package io.github.zektorum.io;
 
-import io.github.zektorum.data.Person;
+import io.github.zektorum.data.person.Person;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

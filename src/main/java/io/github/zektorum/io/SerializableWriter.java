@@ -4,7 +4,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import io.github.zektorum.data.Person;
+import io.github.zektorum.data.person.Person;
 
 import java.io.IOException;
 import java.time.ZonedDateTime;

@@ -1,8 +1,8 @@
 package io.github.zektorum.command;
 
-import io.github.zektorum.data.Location;
-import io.github.zektorum.data.PeopleCollection;
-import io.github.zektorum.data.Person;
+import io.github.zektorum.data.collection.PeopleCollection;
+import io.github.zektorum.data.person.Person;
+import io.github.zektorum.data.person.fields.Location;
 
 import java.util.Map;
 import java.util.TreeMap;

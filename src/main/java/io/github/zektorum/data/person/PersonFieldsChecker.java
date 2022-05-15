@@ -1,4 +1,9 @@
-package io.github.zektorum.data;
+package io.github.zektorum.data.person;
+
+import io.github.zektorum.data.person.fields.Color;
+import io.github.zektorum.data.person.fields.Coordinates;
+import io.github.zektorum.data.person.fields.Country;
+import io.github.zektorum.data.person.fields.Location;
 
 public class PersonFieldsChecker {
     public static boolean isFieldNotNull(Float value) {

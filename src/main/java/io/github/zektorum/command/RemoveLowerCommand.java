@@ -1,8 +1,9 @@
 package io.github.zektorum.command;
 
-import io.github.zektorum.data.Person;
-import io.github.zektorum.data.PeopleCollection;
-import io.github.zektorum.data.PersonCreator;
+import io.github.zektorum.data.person.Person;
+import io.github.zektorum.data.collection.PeopleCollection;
+import io.github.zektorum.data.person.creation.Director;
+import io.github.zektorum.data.person.creation.PersonBuilderFromUserInput;
 
 import java.util.TreeMap;
 import java.util.Map;
@@ -24,8 +25,8 @@ public class RemoveLowerCommand extends BaseCommand {
             System.out.println("Некорректные аргументы!\n");
             return;
         }
-        PersonCreator pc = new PersonCreator(arg1, Integer.parseInt(arg2));
-        Person person = pc.create();
+        Director director = new Director(new PersonBuilderFromUserInput());
+        Person person = director.createPerson();
         TreeMap<Person, Integer> myMap = new TreeMap<>();
         for (Map.Entry element : peopleCollection.getPeopleCollection().entrySet()) {
             myMap.put((Person)element.getValue(), (Integer)element.getKey());

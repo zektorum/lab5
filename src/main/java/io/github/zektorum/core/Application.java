@@ -1,7 +1,7 @@
 package io.github.zektorum.core;
 
-import io.github.zektorum.data.PeopleCollection;
-import io.github.zektorum.data.Person;
+import io.github.zektorum.data.collection.PeopleCollection;
+import io.github.zektorum.data.person.Person;
 import io.github.zektorum.io.FileReader;
 import io.github.zektorum.io.SerializableReader;
 

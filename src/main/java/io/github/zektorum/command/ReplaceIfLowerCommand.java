@@ -1,9 +1,12 @@
 package io.github.zektorum.command;
 
 import io.github.zektorum.core.Interpreter;
-import io.github.zektorum.data.Person;
-import io.github.zektorum.data.PeopleCollection;
-import io.github.zektorum.data.PersonCreator;
+import io.github.zektorum.data.person.Person;
+import io.github.zektorum.data.collection.PeopleCollection;
+import io.github.zektorum.data.person.creation.Director;
+import io.github.zektorum.data.person.creation.PersonBuilder;
+import io.github.zektorum.data.person.creation.PersonBuilderFromFile;
+import io.github.zektorum.data.person.creation.PersonBuilderFromUserInput;
 
 public class ReplaceIfLowerCommand extends BaseCommand {
     public ReplaceIfLowerCommand() {
@@ -17,23 +20,28 @@ public class ReplaceIfLowerCommand extends BaseCommand {
     public void execute(PeopleCollection people, String arg1, String arg2, String arg3) {
         try {
             Integer.parseInt(arg1);
-            Integer.parseInt(arg3);
         } catch (NumberFormatException e) {
             System.out.println("Некорректные аргументы!\n");
             return;
         }
 
-        PersonCreator pc = new PersonCreator(arg2, Integer.parseInt(arg3));
-
         Person person;
+        PersonBuilder personBuilder;
         if (!Interpreter.scriptsStack.get(Interpreter.scriptsStack.size() - 1).equals("Main")) {
-            person = pc.create(Interpreter.input);
+            personBuilder = new PersonBuilderFromFile(Interpreter.input);
         } else {
-            person = pc.create();
+            personBuilder = new PersonBuilderFromUserInput();
+        }
+        Director director = new Director(personBuilder);
+        person = director.createPerson();
+
+        try {
+            if (person.compareTo(people.getPeopleCollection().get(Integer.parseInt(arg1))) < 0) {
+                people.getPeopleCollection().put(Integer.parseInt(arg1), person);
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Элемент с таким ключём не существует!");
         }
 
-        if (person.compareTo(people.getPeopleCollection().get(Integer.parseInt(arg1))) < 0) {
-            people.getPeopleCollection().put(Integer.parseInt(arg1), person);
-        }
     }
 }
