@@ -7,6 +7,9 @@ import io.github.zektorum.data.person.fields.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Схема создания объекта Person на основе данных из файла.
+ */
 public class PersonBuilderFromFile implements PersonBuilder {
     final private Scanner input;
     private String name;

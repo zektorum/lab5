@@ -12,6 +12,9 @@ import io.github.zektorum.data.person.fields.CoordinatesReader;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Схема создания объекта Person на основе пользовательского ввода.
+ */
 public class PersonBuilderFromUserInput implements PersonBuilder {
     private String name;
     private Coordinates coordinates;
