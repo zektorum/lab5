@@ -4,8 +4,7 @@ import io.github.zektorum.data.collection.PeopleCollection;
 import io.github.zektorum.data.person.Person;
 import io.github.zektorum.data.person.fields.Location;
 
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Реализация команды print_field_ascending_location.
@@ -24,20 +23,15 @@ public class PrintFieldAscendingLocationCommand extends BaseCommand {
             System.out.println("Некорректные аргументы!");
             return;
         }
-        TreeMap<Integer, Person> locations = new TreeMap<>();
+        List<Location> locations = new ArrayList<>();
         Location location;
         for (Map.Entry element: peopleCollection.getPeopleCollection().entrySet()) {
-            location = ((Person)element.getValue()).getLocation();
-            locations.put(
-                    (int)Math.sqrt(Math.pow(location.getX(), 2) +
-                            Math.pow((double)(location.getY()), 2) + Math.pow(location.getZ(), 2)),
-                    (Person)element.getValue()
-            );
+            locations.add(((Person)element.getValue()).getLocation());
         }
 
-        for (Map.Entry element : locations.entrySet()) {
-            location = ((Person)element.getValue()).getLocation();
-            System.out.printf("(%.2f, %.2f, %.2f)\n", location.getX(), location.getY(), location.getZ());
+        Collections.sort(locations);
+        for (Location element : locations) {
+            System.out.printf("(%.2f, %.2f, %.2f)\n", element.getX(), element.getY(), element.getZ());
         }
         System.out.println();
     }

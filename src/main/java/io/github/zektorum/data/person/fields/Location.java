@@ -6,7 +6,7 @@ import com.google.gson.annotations.Expose;
  * Класс, реализующий хранение локации объекта типа Person.
  * Все поля данного класса сериализуются/десериализуются.
  */
-public class Location {
+public class Location implements Comparable<Location> {
     @Expose
     private double x;
 
@@ -27,6 +27,15 @@ public class Location {
         this.x = x;
         this.y = y;
         this.z = z;
+    }
+
+    public int compareTo(Location o) {
+        return this.getAbs() - o.getAbs();
+    }
+
+    private int getAbs() {
+        return (int)Math.sqrt(Math.pow(this.getX(), 2) +
+                Math.pow((double)(this.getY()), 2) + Math.pow(this.getZ(), 2));
     }
 
     /**
