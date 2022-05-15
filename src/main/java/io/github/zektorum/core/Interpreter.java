@@ -79,7 +79,7 @@ public class Interpreter {
         List<String> tokens = new ArrayList<>();
         System.out.printf("%s ", promptString);
         try {
-            while (!(input = userInput.nextLine().toLowerCase()).equals(" ")) {
+            while (userInput.hasNext() && !(input = userInput.nextLine().toLowerCase()).equals(" ")) {
                 if (input.equals("")) {
                     continue;
                 }
