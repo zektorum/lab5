@@ -13,6 +13,9 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.TreeMap;
 
+/**
+ * Класс реализует интерпретатор, работающий в двух режимах.
+ */
 public class Interpreter {
     private final int interpreterMode;
     private final String PS1;
@@ -42,23 +45,44 @@ public class Interpreter {
         }
     }
 
+    /**
+     * Используется для создания интерпретатора в режиме ввода с клавиатуры.
+     */
     public Interpreter() {
         this.interpreterMode = Interpreter.USER_INPUT;
         Interpreter.scriptsStack.add("Main");
     }
 
+    /**
+     * Используется для создания интерпретатора в режиме ввода из файла.
+     *
+     * @param scriptName название файла, содержащего команды
+     */
     public Interpreter(String scriptName) {
         this.interpreterMode = Interpreter.SCRIPT_INPUT;
         this.scriptName = scriptName;
         Interpreter.scriptsStack.add(scriptName);
     }
 
+    /**
+     * Метод выводит в консоль стек вызовов скриптов.
+     */
     public void printScriptsStack() {
         for (String script : Interpreter.scriptsStack) {
             System.out.printf("* %s\n", script);
         }
     }
 
+    /**
+     * Основной цикл приложения. В нём происходит парсинг пользовательского ввода/ввода из файла -
+     * ввод разбивается на токены, происходит выборка команды и её последующий запуск с полученными
+     * аргументами.
+     * Пользователю выводится приглашение к вводу: PS1 при вводе с клавиатура и PS2 при вводе из файла.
+     * Для запуска интерпретатора в режиме ввода с клавиатуры используется флаг Interpreter.USER_INPUT,
+     * а для ввода из файла - Interpreter.SCRIPT_INPUT.
+     *
+     * @param peopleCollection коллекция объектов типа Person
+     */
     public void run(PeopleCollection peopleCollection) {
         Scanner userInput = null;
         String input, promptString, arg1 = "", arg2 = "", arg3 = "";

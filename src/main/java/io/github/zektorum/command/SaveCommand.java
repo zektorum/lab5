@@ -4,6 +4,9 @@ import io.github.zektorum.data.collection.PeopleCollection;
 
 import java.io.IOException;
 
+/**
+ * Реализация команды save.
+ */
 public class SaveCommand extends BaseCommand {
     public SaveCommand() {
         super(

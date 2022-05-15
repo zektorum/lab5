@@ -2,6 +2,9 @@ package io.github.zektorum.command;
 
 import io.github.zektorum.data.collection.PeopleCollection;
 
+/**
+ * Реализация команды show.
+ */
 public class ShowCommand extends BaseCommand {
     public ShowCommand() {
         super(

@@ -2,6 +2,9 @@ package io.github.zektorum.command;
 
 import io.github.zektorum.data.collection.PeopleCollection;
 
+/**
+ * Реализация команды clear.
+ */
 public class ClearCommand extends BaseCommand {
     public ClearCommand() {
         super(

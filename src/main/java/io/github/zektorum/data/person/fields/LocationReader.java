@@ -6,7 +6,15 @@ import io.github.zektorum.data.person.fields.Location;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Класс, осуществляющий чтение полей объекта Location с клавиатуры либо из файла.
+ */
 public class LocationReader {
+    /**
+     * Метод, создающий объект локации на основе пользовательского ввода.
+     *
+     * @return объект локации
+     */
     public Location read() {
         System.out.println("Введите локацию");
         double x = this.readLocationX();
@@ -16,6 +24,12 @@ public class LocationReader {
         return new Location(x, y, z);
     }
 
+    /**
+     * Метод, создающий объект локации на основе данных из скрипта.
+     *
+     * @param input scanner из интерпретатора, запустившего скрипт
+     * @return объект локации
+     */
     public Location readFromFile(Scanner input) {
         double x = this.readLocationXFromFile(input);
         Float y = this.readLocationYFromFile(input);
@@ -24,6 +38,9 @@ public class LocationReader {
         return new Location(x, y, z);
     }
 
+    /**
+     * @return абсцисса локации
+     */
     public double readLocationX() {
         String x_MIN = "-1.7976931348623157*10^308";
         String x_MAX = "1.7976931348623157*10^308";
@@ -49,6 +66,9 @@ public class LocationReader {
 
     }
 
+    /**
+     * @return ордината локации
+     */
     public Float readLocationY() {
         String y_MAX = "3.40282347*10^38";
         String y_MIN = "−3.40282347*10^38";
@@ -76,6 +96,9 @@ public class LocationReader {
         return y;
     }
 
+    /**
+     * @return аппликата локации
+     */
     public Double readLocationZ() {
         String z_MAX = "1.7976931348623157*10^308";
         String z_MIN = "−1.7976931348623157*10^308";
@@ -102,6 +125,10 @@ public class LocationReader {
         return z;
     }
 
+    /**
+     * @param input scanner из интерпретатора, запустившего скрипт
+     * @return абсцисса локации
+     */
     public double readLocationXFromFile(Scanner input) {
         try {
             return input.nextDouble();
@@ -110,6 +137,10 @@ public class LocationReader {
         }
     }
 
+    /**
+     * @param input scanner из интерпретатора, запустившего скрипт
+     * @return ордината локации
+     */
     public Float readLocationYFromFile(Scanner input) {
         try {
             return input.nextFloat();
@@ -118,6 +149,10 @@ public class LocationReader {
         }
     }
 
+    /**
+     * @param input scanner из интерпретатора, запустившего скрипт
+     * @return аппликата локации
+     */
     public Double readLocationZFromFile(Scanner input) {
         try {
             return input.nextDouble();

@@ -9,6 +9,9 @@ import static org.reflections.scanners.Scanners.SubTypes;
 
 import java.util.Set;
 
+/**
+ * Реализация команды help.
+ */
 public class HelpCommand extends BaseCommand {
     public HelpCommand() {
         super(

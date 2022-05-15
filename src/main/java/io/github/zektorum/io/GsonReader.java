@@ -12,7 +12,10 @@ import io.github.zektorum.data.person.Person;
 import java.io.IOException;
 import java.time.ZonedDateTime;
 
-public class SerializableReader implements SerializableFormatReader {
+/**
+ * Десериализует json.
+ */
+public class GsonReader implements SerializableFormatReader {
     public Person[] getStructuredData(String content) {
         Gson gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()

@@ -6,7 +6,15 @@ import io.github.zektorum.data.person.fields.Coordinates;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Класс, содержаший методы, необходимые для чтения координат.
+ */
 public class CoordinatesReader {
+    /**
+     * Создаёт объект координат на основе пользовательского ввода.
+     *
+     * @return объект координат
+     */
     public Coordinates read() {
         System.out.println("Введите координаты");
         double x = this.readCoordinateX();
@@ -14,12 +22,21 @@ public class CoordinatesReader {
         return new Coordinates(x, y);
     }
 
+    /**
+     * Создаёт объект координат на основе данных из пользовательского скрипта
+     *
+     * @param input scanner из интерпретатора, необходимый для считывания полей Person из файла
+     * @return объект координат
+     */
     public Coordinates readFromFile(Scanner input) {
         double x = this.readCoordinateXFromFile(input);
         Integer y = this.readCoordinateYFromFile(input);
         return new Coordinates(x, y);
     }
 
+    /**
+     * @return абсцисса координат
+     */
     private double readCoordinateX() {
         String x_MAX = "1.7976931348623157*10^308";
         System.out.printf("Диапазон значений: x ∈ (-183, %s]\n", x_MAX);
@@ -45,6 +62,9 @@ public class CoordinatesReader {
         return x;
     }
 
+    /**
+     * @return ордината координат
+     */
     private Integer readCoordinateY() {
         String y_MIN = "-2147483648";
         System.out.printf("Диапазон значений: y ∈ [%s, 750); y != null\n", y_MIN);
@@ -70,6 +90,10 @@ public class CoordinatesReader {
         return y;
     }
 
+    /**
+     * @param input scanner из интерпретатора, необходимый для считывания координаты
+     * @return абсцисса координат
+     */
     private double readCoordinateXFromFile(Scanner input) {
         try {
             return input.nextDouble();
@@ -77,6 +101,10 @@ public class CoordinatesReader {
             return -183.;        }
     }
 
+    /**
+     * @param input scanner из интерпретатора, необходимый для считывания координаты
+     * @return ордината координат
+     */
     private Integer readCoordinateYFromFile(Scanner input) {
         try {
             return input.nextInt();

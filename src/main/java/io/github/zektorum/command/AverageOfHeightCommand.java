@@ -2,6 +2,9 @@ package io.github.zektorum.command;
 
 import io.github.zektorum.data.collection.PeopleCollection;
 
+/**
+ * Реализация команды average_of_height.
+ */
 public class AverageOfHeightCommand extends BaseCommand {
     public AverageOfHeightCommand() {
         super(

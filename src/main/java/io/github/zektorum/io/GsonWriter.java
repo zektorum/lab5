@@ -9,7 +9,10 @@ import io.github.zektorum.data.person.Person;
 import java.io.IOException;
 import java.time.ZonedDateTime;
 
-public class SerializableWriter implements SerializableFormatWriter {
+/**
+ * Сериализует в json.
+ */
+public class GsonWriter implements SerializableFormatWriter {
     public String createContentFromStructuredData(Person[] people) {
         return new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()

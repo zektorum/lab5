@@ -8,6 +8,9 @@ import io.github.zektorum.data.person.creation.PersonBuilder;
 import io.github.zektorum.data.person.creation.PersonBuilderFromFile;
 import io.github.zektorum.data.person.creation.PersonBuilderFromUserInput;
 
+/**
+ * Реализация команды replace_if_lower.
+ */
 public class ReplaceIfLowerCommand extends BaseCommand {
     public ReplaceIfLowerCommand() {
         super(
@@ -24,7 +27,6 @@ public class ReplaceIfLowerCommand extends BaseCommand {
             System.out.println("Некорректные аргументы!\n");
             return;
         }
-
         Person person;
         PersonBuilder personBuilder;
         if (!Interpreter.scriptsStack.get(Interpreter.scriptsStack.size() - 1).equals("Main")) {

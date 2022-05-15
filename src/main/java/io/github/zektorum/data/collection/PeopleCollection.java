@@ -7,7 +7,7 @@ import io.github.zektorum.data.person.creation.PersonBuilder;
 import io.github.zektorum.data.person.creation.PersonBuilderFromFile;
 import io.github.zektorum.data.person.creation.PersonBuilderFromUserInput;
 import io.github.zektorum.io.FileWriter;
-import io.github.zektorum.io.SerializableWriter;
+import io.github.zektorum.io.GsonWriter;
 
 import java.io.IOException;
 import java.time.ZonedDateTime;
@@ -15,12 +15,20 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Класс-обёртка для хранения коллекции типа TreeMap.
+ */
 public class PeopleCollection {
     private TreeMap<Integer, Person> people;
     private ZonedDateTime initializationDate;
     private ArrayList<Integer> usedIds;
     private String filename;
 
+    /**
+     * Инициализирует коллекцию десериализованными данными.
+     *
+     * @param structuredData объекты, полученные из файла
+     */
     public PeopleCollection(Person[] structuredData) {
         this.people = new TreeMap<>();
         this.usedIds = new ArrayList<>();
@@ -44,21 +52,35 @@ public class PeopleCollection {
         this.initializationDate = ZonedDateTime.now();
     }
 
+    /**
+     * @return коллекция объектов Person
+     */
     public TreeMap<Integer, Person> getPeopleCollection() {
         return this.people;
     }
 
+    /**
+     * @param key ключ коллекции
+     */
     public void removeElementByKey(int key) {
         if (this.isValidId(key)){
             this.people.remove(key);
         }
     }
 
+    /**
+     * Реализация команды clear.
+     */
     public void clearCollection() {
         this.usedIds.clear();
         this.people.clear();
     }
 
+    /**
+     * Реализация команды save.
+     *
+     * @throws IOException если файл с коллекцией недоступен для записи
+     */
     public void saveAsFile() throws IOException {
         FileWriter writer = new FileWriter(this.filename);
         Person[] peopleArray = new Person[this.people.size()];
@@ -67,9 +89,15 @@ public class PeopleCollection {
             peopleArray[i] = person.getValue();
             ++i;
         }
-        writer.write(new SerializableWriter(), peopleArray);
+        writer.write(new GsonWriter(), peopleArray);
     }
 
+    /**
+     * Выводит один элемент коллекции в консоль.
+     *
+     * @param key ключ элемента
+     * @param person элемент
+     */
     public void print(Integer key, Person person) {
         String format;
         if (person.getLocation() != null) {
@@ -96,16 +124,22 @@ public class PeopleCollection {
         );
     }
 
+    /**
+     * Выводит все элементы коллекции в консоль.
+     */
     public void showAll() {
         this.people.forEach(this::print);
     }
 
+    /**
+     * Выводит в консоль информацию о коллекции.
+     */
     public void info() {
         System.out.printf(
                 "Тип: %s\nДата инициализации: %s\nКоличество элементов: %s\n\n",
                 this.people.getClass().getName(),
                 this.initializationDate,
-                this.people.size()
+                this.people.size() // TODO: добавить вывод количества пропущенных элементов и пути к файлу коллекции
         );
     }
 
@@ -123,6 +157,11 @@ public class PeopleCollection {
         this.people.put(key, person);
     }
 
+    /**
+     * Реализует команду average_of_height.
+     *
+     * @return средний рост
+     */
     public double averageOfHeight() {
         double sum = 0;
         for (Map.Entry<Integer, Person> person : this.people.entrySet()) {
@@ -131,6 +170,11 @@ public class PeopleCollection {
         return sum / this.people.size();
     }
 
+    /**
+     * Генерирует уникальный id.
+     *
+     * @return id
+     */
     private int generateId() {
         for (int id = 1; ; ++id) {
             if (this.usedIds.contains(id)) {
@@ -141,6 +185,12 @@ public class PeopleCollection {
         }
     }
 
+    /**
+     * Проверка на валидность идентификатора пользователя.
+     *
+     * @param id идентификатор пользователя
+     * @return для валидных id - true, для остальных - false
+     */
     private boolean isValidId(int id) {
         if (this.people.get(id) == null || id < 1) {
             System.out.printf("Элемент с id %s отсутствует!\n", id);

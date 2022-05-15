@@ -8,6 +8,9 @@ import io.github.zektorum.data.person.fields.Location;
 
 import java.time.ZonedDateTime;
 
+/**
+ * Класс, определяющий сущность "человек".
+ */
 public class Person implements Comparable<Person> {
     private int id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
 
@@ -35,6 +38,17 @@ public class Person implements Comparable<Person> {
     @Expose
     private ZonedDateTime creationDate;
 
+    /**
+     * Создаёт объект на основе переданных параметров. Дата создания генерируется автоматически.
+     *
+     * @param name        имя человека
+     * @param height      рост человека
+     * @param location    локация человека
+     * @param coordinates координаты человека
+     * @param eyeColor    цвет глаз человека
+     * @param hairColor   цвет волос человека
+     * @param nationality национальность человека
+     */
     public Person(
             String name, double height, Location location, Coordinates coordinates,
             Color.EyeColor eyeColor, Color.HairColor hairColor, Country nationality
@@ -53,70 +67,75 @@ public class Person implements Comparable<Person> {
         return this.name.compareTo(person.getName());
     }
 
+    /**
+     * @return дата создания объекта
+     */
     public ZonedDateTime getCreationDate() {
         return this.creationDate;
     }
 
+    /**
+     * @return имя человека
+     */
     public String getName() {
         return this.name;
     }
 
-    public Coordinates getCoordinates() {
-        return this.coordinates;
-    }
-
-    public Color.EyeColor getEyeColor() {
-        return this.eyeColor;
-    }
-
-    public Color.HairColor getHairColor() {
-        return this.hairColor;
-    }
-
+    /**
+     * @return рост человека
+     */
     public double getHeight() {
         return this.height;
     }
 
-    public Country getNationality() {
-        return this.nationality;
-    }
-
+    /**
+     * @return локация человека
+     */
     public Location getLocation() {
         return this.location;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    /**
+     * @return координаты человека
+     */
+    public Coordinates getCoordinates() {
+        return this.coordinates;
     }
 
-    public void setCoordinates(Coordinates coordinates) {
-        this.coordinates = coordinates;
+    /**
+     * @return цвет глаз человека
+     */
+    public Color.EyeColor getEyeColor() {
+        return this.eyeColor;
     }
 
-    public void setHeight(double height) {
-        this.height = height;
+    /**
+     * @return цвет волос человека
+     */
+    public Color.HairColor getHairColor() {
+        return this.hairColor;
     }
 
-    public void setEyeColor(Color.EyeColor eyeColor) {
-        this.eyeColor = eyeColor;
+    /**
+     * @return национальность человека
+     */
+    public Country getNationality() {
+        return this.nationality;
     }
 
-    public void setHairColor(Color.HairColor hairColor) {
-        this.hairColor = hairColor;
-    }
 
-    public void setNationality(Country nationality) {
-        this.nationality = nationality;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
+    /**
+     * @return идентификатор объекта
+     */
     public int getId() {
         return this.id;
     }
 
+    /**
+     * Устанавливает объекту id.
+     *
+     * @param id идентификатор объекта
+     */
     public void setId(int id) {
         this.id = id;
     }

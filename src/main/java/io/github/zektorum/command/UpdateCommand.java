@@ -8,6 +8,9 @@ import io.github.zektorum.data.person.creation.PersonBuilder;
 import io.github.zektorum.data.person.creation.PersonBuilderFromFile;
 import io.github.zektorum.data.person.creation.PersonBuilderFromUserInput;
 
+/**
+ * Реализация команды update.
+ */
 public class UpdateCommand extends BaseCommand {
     public UpdateCommand() {
         super(

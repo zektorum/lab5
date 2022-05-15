@@ -6,6 +6,9 @@ import io.github.zektorum.data.collection.PeopleCollection;
 
 import java.util.Map;
 
+/**
+ * Реализация команды count_greater_than_eye_color.
+ */
 public class CountGreaterThanEyeColorCommand extends BaseCommand {
     public CountGreaterThanEyeColorCommand() {
         super(

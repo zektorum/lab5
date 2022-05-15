@@ -2,6 +2,9 @@ package io.github.zektorum.command;
 
 import io.github.zektorum.data.collection.PeopleCollection;
 
+/**
+ *  Реализация команды remove_key.
+ */
 public class RemoveKeyCommand extends BaseCommand {
     public RemoveKeyCommand() {
         super(

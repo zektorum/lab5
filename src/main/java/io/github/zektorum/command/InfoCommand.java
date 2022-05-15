@@ -2,6 +2,9 @@ package io.github.zektorum.command;
 
 import io.github.zektorum.data.collection.PeopleCollection;
 
+/**
+ * Реализация команды info.
+ */
 public class InfoCommand extends BaseCommand {
     public InfoCommand() {
         super(

@@ -5,6 +5,9 @@ import io.github.zektorum.data.collection.PeopleCollection;
 
 import java.io.File;
 
+/**
+ * Реализация команды execute_script.
+ */
 public class ExecuteScriptCommand extends BaseCommand {
     public ExecuteScriptCommand() {
         super(

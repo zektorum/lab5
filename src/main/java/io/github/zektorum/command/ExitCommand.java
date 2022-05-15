@@ -2,6 +2,9 @@ package io.github.zektorum.command;
 
 import io.github.zektorum.data.collection.PeopleCollection;
 
+/**
+ * Реализация команды exit.
+ */
 public class ExitCommand extends BaseCommand {
     public ExitCommand() {
         super(

@@ -8,6 +8,9 @@ import io.github.zektorum.data.person.creation.PersonBuilderFromUserInput;
 import java.util.TreeMap;
 import java.util.Map;
 
+/**
+ * Реализация команды remove_lower.
+ */
 public class RemoveLowerCommand extends BaseCommand {
     public RemoveLowerCommand() {
         super(

@@ -7,6 +7,9 @@ import io.github.zektorum.data.person.fields.Location;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Реализация команды print_field_ascending_location.
+ */
 public class PrintFieldAscendingLocationCommand extends BaseCommand {
     public PrintFieldAscendingLocationCommand() {
         super(

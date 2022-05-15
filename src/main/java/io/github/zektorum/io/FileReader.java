@@ -6,6 +6,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/**
+ * Класс, преобразующий данные из файла в текстовый формат.
+ */
 public class FileReader implements Readable {
     private String filename;
 

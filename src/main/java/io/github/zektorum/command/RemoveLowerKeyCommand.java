@@ -7,6 +7,9 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+/**
+ * Реализация команды remove_lower_key.
+ */
 public class RemoveLowerKeyCommand extends BaseCommand {
     public RemoveLowerKeyCommand() {
         super(

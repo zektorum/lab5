@@ -2,6 +2,9 @@ package io.github.zektorum.command;
 
 import io.github.zektorum.data.collection.PeopleCollection;
 
+/**
+ * Реализация команды insert.
+ */
 public class InsertCommand extends BaseCommand {
     public InsertCommand() {
         super(
