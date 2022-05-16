@@ -40,8 +40,8 @@ public class PeopleCollection {
         for (Person person : structuredData) {
             if (!PersonFieldsChecker.isValidPerson(person)) {
                 System.out.printf(
-                        "[WARNING] Объект c id %d не соответствует критериям и не добавлен в коллекцию\n",
-                        person.getId()
+                        "[WARNING] Объект c именем %s не соответствует критериям и не добавлен в коллекцию\n",
+                        person.getName()
                 );
                 continue;
             }

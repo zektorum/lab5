@@ -35,7 +35,6 @@ public class Person implements Comparable<Person> {
     @Expose
     private Location location; //Поле может быть null
 
-    @Expose
     private ZonedDateTime creationDate;
 
     /**
@@ -60,6 +59,10 @@ public class Person implements Comparable<Person> {
         this.eyeColor = eyeColor;
         this.hairColor = hairColor;
         this.nationality = nationality;
+        this.creationDate = ZonedDateTime.now();
+    }
+
+    public Person() {
         this.creationDate = ZonedDateTime.now();
     }
 
