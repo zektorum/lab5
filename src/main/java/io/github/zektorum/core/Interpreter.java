@@ -64,6 +64,12 @@ public class Interpreter {
         Interpreter.scriptsStack.add(scriptName);
     }
 
+    public static void checkInput(Scanner userInput) {
+        if (!userInput.hasNext()) {
+           System.exit(0);
+        }
+    }
+
     /**
      * Метод выводит в консоль стек вызовов скриптов.
      */

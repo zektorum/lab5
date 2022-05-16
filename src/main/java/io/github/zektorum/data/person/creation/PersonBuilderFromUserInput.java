@@ -1,5 +1,6 @@
 package io.github.zektorum.data.person.creation;
 
+import io.github.zektorum.core.Interpreter;
 import io.github.zektorum.data.person.Person;
 import io.github.zektorum.data.person.PersonFieldsChecker;
 import io.github.zektorum.data.person.fields.Color;
@@ -29,9 +30,12 @@ public class PersonBuilderFromUserInput implements PersonBuilder {
         String name;
         while (true) {
             System.out.print("Введите имя: ");
+            Interpreter.checkInput(userInput);
             name = userInput.nextLine();
             if (name.equals("")) {
                 System.out.println("Некорректное значение! Строка должна быть непуста.");
+                Interpreter.checkInput(userInput);
+                userInput.nextLine();
             } else {
                 this.name = name;
                 break;
@@ -52,9 +56,11 @@ public class PersonBuilderFromUserInput implements PersonBuilder {
         while (true) {
             System.out.print("Введите рост: ");
             try {
+                Interpreter.checkInput(userInput);
                 height = userInput.nextInt();
                 if (height < 1) {
                     System.out.println("Некорректное значение! Число должно быть положительным.");
+                    userInput.nextLine();
                     continue;
                 } else {
                     this.height = height;
@@ -62,6 +68,8 @@ public class PersonBuilderFromUserInput implements PersonBuilder {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Некорректное значение! Число должно быть целым и положительным.");
+                Interpreter.checkInput(userInput);
+                userInput.nextLine();
                 continue;
             }
         }
@@ -71,6 +79,7 @@ public class PersonBuilderFromUserInput implements PersonBuilder {
     public PersonBuilder withEyeColor() {
         Scanner userInput = new Scanner(System.in);
         System.out.println("Введите цвет глаз.\nДоступные варианты: RED, BLACK, BLUE, ORANGE, BROWN");
+        Interpreter.checkInput(userInput);
         String eyeColor = userInput.next().toUpperCase();
         while (true) {
             try {
@@ -80,7 +89,9 @@ public class PersonBuilderFromUserInput implements PersonBuilder {
                 System.out.println(
                         "Некорректный ввод! Повторите попытку\nДоступные варианты: RED, BLACK, BLUE, ORANGE, BROWN"
                 );
+                Interpreter.checkInput(userInput);
                 userInput.nextLine();
+                Interpreter.checkInput(userInput);
                 eyeColor = userInput.next().toUpperCase();
             }
         }
@@ -90,6 +101,7 @@ public class PersonBuilderFromUserInput implements PersonBuilder {
     public PersonBuilder withHairColor() {
         Scanner userInput = new Scanner(System.in);
         System.out.print("Введите цвет волос.\nДоступные варианты: GREEN, BLUE, WHITE\n");
+        Interpreter.checkInput(userInput);
         String hairColor = userInput.next().toUpperCase();
         while (true) {
             try {
@@ -97,7 +109,9 @@ public class PersonBuilderFromUserInput implements PersonBuilder {
                 break;
             } catch (IllegalArgumentException e) {
                 System.out.println("Некорректный ввод! Повторите попытку\nДоступные варианты: GREEN, BLUE, WHITE");
+                Interpreter.checkInput(userInput);
                 userInput.nextLine();
+                Interpreter.checkInput(userInput);
                 hairColor = userInput.next().toUpperCase();
             }
         }
@@ -107,6 +121,7 @@ public class PersonBuilderFromUserInput implements PersonBuilder {
     public PersonBuilder withNationality() {
         Scanner userInput = new Scanner(System.in);
         System.out.println("Введите национальность.\nДоступные варианты: UNITED_KINGDOM, USA, ITALY, SOUTH_KOREA, JAPAN");
+        Interpreter.checkInput(userInput);
         String nationality = userInput.next().toUpperCase();
         while (true) {
             try {
@@ -115,7 +130,9 @@ public class PersonBuilderFromUserInput implements PersonBuilder {
             } catch (IllegalArgumentException e) {
                 System.out.println("Некорректный ввод! Повторите попытку");
                 System.out.println("Доступные варианты: UNITED_KINGDOM, USA, ITALY, SOUTH_KOREA, JAPAN");
+                Interpreter.checkInput(userInput);
                 userInput.nextLine();
+                Interpreter.checkInput(userInput);
                 nationality = userInput.next().toUpperCase();
             }
         }
