@@ -65,7 +65,7 @@ public class Interpreter {
     }
 
     public static void checkInput(Scanner userInput) {
-        if (!userInput.hasNext()) {
+        if (!userInput.hasNextLine()) {
            System.exit(0);
         }
     }

@@ -27,17 +27,15 @@ public class PersonBuilderFromUserInput implements PersonBuilder {
 
     public PersonBuilder withName() {
         Scanner userInput = new Scanner(System.in);
-        String name;
+        String data = "";
         while (true) {
-            System.out.print("Введите имя: ");
+            System.out.println("Введите имя: ");
             Interpreter.checkInput(userInput);
-            name = userInput.nextLine();
-            if (name.equals("")) {
+            data = userInput.nextLine();
+            if (data.equals("")) {
                 System.out.println("Некорректное значение! Строка должна быть непуста.");
-                Interpreter.checkInput(userInput);
-                userInput.nextLine();
             } else {
-                this.name = name;
+                this.name = data;
                 break;
             }
         }

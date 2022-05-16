@@ -128,7 +128,11 @@ public class PeopleCollection {
      * Выводит все элементы коллекции в консоль.
      */
     public void showAll() {
-        this.people.forEach(this::print);
+        if (!this.people.isEmpty()) {
+            this.people.forEach(this::print);
+        } else {
+            System.out.println();
+        }
     }
 
     /**
