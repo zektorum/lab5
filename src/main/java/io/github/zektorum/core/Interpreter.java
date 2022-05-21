@@ -25,8 +25,8 @@ public class Interpreter {
     private String scriptName;
     public static final List<String> scriptsStack = new ArrayList<>();
     public static Scanner input;
-    public static int USER_INPUT = 0;
-    public static int SCRIPT_INPUT = 1;
+    public final static int USER_INPUT = 0;
+    public final static int SCRIPT_INPUT = 1;
 
     {
         this.PS1 = "$";
